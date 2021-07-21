@@ -1,0 +1,32 @@
+.header {
+    padding: 42px 0;
+    height: 128px;
+    width: 100%;
+    text-align: center;
+    background-color: color('grey-light');
+
+    @media (max-width: grid('lg')) {
+        padding: 28px 0;
+        height: 100px;
+    }
+
+    @media (max-width: grid('xs')) {
+        padding: 18px 0;
+        height: 80px;
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 43.81px;
+        color: color('brown');
+
+        @media (max-width: grid('md')) {
+            font-size: 30px;
+        }
+
+        @media (max-width: grid('xs')) {
+            font-size: 24px;
+        }
+    }
+}

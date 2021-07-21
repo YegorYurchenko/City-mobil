@@ -1,0 +1,33 @@
+{
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "linebreak-style": 0,
+        "indent": [
+            2,
+            4,
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": 1
+            }
+        ],
+        "no-new": 0,
+        "no-trailing-spaces": 0,
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowTernary": true
+            }
+        ]
+    },
+    "env": {
+        "browser": true,
+        "es6": true
+    }
+}

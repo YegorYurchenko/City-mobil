@@ -1,0 +1,19 @@
+.aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 15.5%;
+    background-color: color('grey');
+    
+    @media (max-width: grid('md')) {
+        display: none;
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 43.81px;
+        color: color('brown');
+    }
+}

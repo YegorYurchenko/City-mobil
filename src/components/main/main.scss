@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    justify-content: flex-start;
+    height: calc(100vh - 128px - 128px); // Из-за header и footer
+
+    @media (max-width: grid('lg')) {
+        height: calc(100vh - 100px - 100px);
+    }
+
+    @media (max-width: grid('xs')) {
+        height: calc(100vh - 80px - 80px);
+    }
+}
