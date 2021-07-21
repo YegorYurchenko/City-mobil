@@ -1,0 +1,57 @@
+.searcher {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 16px;
+
+    @media (max-width: grid('md')) {
+        margin: 0 0 25px;
+    }
+
+    &__svg {
+        position: absolute;
+        top: calc(50% - 8px);
+        left: 16px;
+    }
+
+    &__input {
+        margin: 0 8px 0 0;
+        padding: 13px 13px 13px 40px;
+        height: 42px;
+        width: calc(100% - 171px - 8px); // Из-за кнопки
+        border: 1px solid rgba(198, 209, 221, .5);
+        background-color: color('grey-light2');
+
+        @media (max-width: grid('lg')) {
+            width: calc(100% - 130px - 8px);
+        }
+
+        @media (max-width: grid('xs')) {
+            width: calc(100% - 100px - 8px);
+        }
+    }
+
+    &__find-btn {
+        height: 42px;
+        width: 171px;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 500;
+        color: color('white');
+        background-color: color('grey-darkest');
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: color('grey-darkest-hover');
+        }
+
+        @media (max-width: grid('lg')) {
+            width: 130px;
+        }
+
+        @media (max-width: grid('xs')) {
+            width: 100px;
+        }
+    }
+}

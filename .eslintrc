@@ -9,6 +9,7 @@
     ],
     "rules": {
         "linebreak-style": 0,
+        "parser": "babel-eslint",
         "indent": [
             2,
             4,

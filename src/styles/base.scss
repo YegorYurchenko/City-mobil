@@ -36,3 +36,46 @@ input {
     outline: none;
     border: none;
 }
+
+.scrollable {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+/*Edge*/
+@supports (-ms-ime-align:auto)  {
+    .scrollable:after {
+        content: '';
+        height: 16px;
+        display: block;
+    }
+}
+
+/*Firefox*/
+.scrollable {
+    scrollbar-width: thin;
+    scrollbar-color: color('grey-darkest') color('white');
+}
+
+/*Chrome*/
+.scrollable::-webkit-scrollbar-track {
+    position: absolute;
+    margin: 5px;
+    width: 4px;
+    background-color: color('white');
+    border-radius: 6px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    position: absolute;
+    background-color: color('grey-darkest');
+    border-radius: 6px;
+    background-clip: content-box;
+}
+
+.scrollable::-webkit-scrollbar {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+}
