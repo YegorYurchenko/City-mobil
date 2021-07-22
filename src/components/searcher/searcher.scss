@@ -5,10 +5,6 @@
     align-items: center;
     margin: 0 0 16px;
 
-    @media (max-width: grid('md')) {
-        margin: 0 0 25px;
-    }
-
     &__svg {
         position: absolute;
         top: calc(50% - 8px);

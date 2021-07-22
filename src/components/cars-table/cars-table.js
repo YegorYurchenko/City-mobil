@@ -6,6 +6,7 @@ class CarsTable extends Component {
         this.tableWrapper = React.createRef();
         this.table = React.createRef();
         this.carsTitleSvg = React.createRef();
+        this.tableBody = React.createRef();
 
         this.classes = {
             desktop: 'desktop',
@@ -59,13 +60,26 @@ class CarsTable extends Component {
         }
     }
 
-    sortCars = (e) => {
+    sortCars = () => {
         const { onSortCarsChange } = this.props;
 
         this.carsTitleSvg.current.classList.toggle(this.classes.rotate);
 
         onSortCarsChange();
     };
+
+    selectCar = (e) => {
+        const { onCarClick } = this.props;
+    
+        const year = e.target.innerHTML;
+        const carTitle = e.target.parentElement.getAttribute('data-car-title');
+
+        if (isNaN(year)) {
+            onCarClick(carTitle);
+        } else {
+            onCarClick(carTitle, year);
+        }
+    }
 
     renderRow = (car, id) => {
         return <CarsTableRow
@@ -101,7 +115,7 @@ class CarsTable extends Component {
                             })}
                         </tr>
                     </thead>
-                    <tbody className="cars-table__body">
+                    <tbody className="cars-table__body" ref={this.tableBody} onClick={this.selectCar}>
                         {cars.map(this.renderRow)}
                     </tbody>
                 </table>
@@ -114,17 +128,17 @@ const CarsTableRow = ({ tariffsList, title, tariffs }) => {
     const columnWidth = `${tariffsList.length + 1}%`;
 
     return (
-        <tr className="cars-table__row">
+        <tr className="cars-table__row" data-car-title={title}>
             <th className="cars-table__row-item">{title}</th>
             {tariffsList.map((tariff, idx) => {
                 const tariffExisting = tariffs[tariff];
 
-                let tariffValue = '-'
+                let tariffYear = '-'
                 if (tariffExisting) {
-                    tariffValue = tariffExisting.year;
+                    tariffYear = tariffExisting.year;
                 }
 
-                return <th className="cars-table__row-item" key={`carInfo_${idx}`} style={{ width: columnWidth }}>{tariffValue}</th>
+                return <th className="cars-table__row-item" key={`carInfo_${idx}`} style={{ width: columnWidth }}>{tariffYear}</th>
             })}
         </tr>
     );

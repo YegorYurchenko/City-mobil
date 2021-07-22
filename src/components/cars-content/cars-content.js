@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Searcher from '../searcher';
 import CarsTable from '../cars-table';
+import SelectedCar from '../selected-car';
 import { getData, sortCarsAsc, sortCarsDesc } from '../../services/cars-service';
 
 class CarsContent extends Component {
@@ -11,6 +12,7 @@ class CarsContent extends Component {
             loading: true,
             sortingCars: 'ASC',
             inputValue: '',
+            selectedCarData: '',
             cars: [],
             tariffsList: [],
         };
@@ -56,8 +58,16 @@ class CarsContent extends Component {
         });
     }
 
+    onCarClick = (carTitle, year = '') => {
+        if (year) {
+            this.setState({ selectedCarData: `Выбран автомобиль ${carTitle} ${year} года выпуска` });
+        } else {
+            this.setState({ selectedCarData: `Выбран автомобиль ${carTitle}` });
+        }
+    }
+
     render() {
-        let { loading, inputValue, cars, tariffsList } = this.state;
+        let { loading, inputValue, selectedCarData, cars, tariffsList } = this.state;
 
         if (inputValue) {
             cars = this.filterCars(cars, inputValue);
@@ -66,7 +76,9 @@ class CarsContent extends Component {
         return (
             <section className="cars-content">
                 <Searcher onSearchChange={this.onSearchChange} />
-                <CarsTable loading={loading} cars={cars} tariffsList={tariffsList} onSortCarsChange={this.onSortCarsChange} />
+                <CarsTable loading={loading} cars={cars} tariffsList={tariffsList}
+                        onSortCarsChange={this.onSortCarsChange} onCarClick={this.onCarClick} />
+                <SelectedCar selectedCarData={selectedCarData} />
             </section>
         );
     }
