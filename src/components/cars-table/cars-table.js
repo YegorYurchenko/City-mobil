@@ -64,7 +64,12 @@ class CarsTable extends Component {
     sortCars = () => {
         const { onSortCarsChange } = this.props;
 
-        this.carsTitleSvg.current.classList.toggle(this.classes.rotate);
+        let ua = window.navigator.userAgent.toLowerCase();
+        let is_ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
+        
+        if (!is_ie) {
+            this.carsTitleSvg.current.classList.toggle(this.classes.rotate);
+        }
 
         onSortCarsChange();
     };
@@ -105,11 +110,13 @@ class CarsTable extends Component {
                     <thead className="cars-table__head">
                         <tr className="cars-table__row">
                             <th className="cars-table__row-item-head" style={{ width: columnWidth }} onClick={this.sortCars}>
-                                <span className="cars-table__row-item-head-text">Марка и модель</span>
-                                <svg ref={this.carsTitleSvg} className="cars-table__row-item-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clipPath="url(#clip0)"> <path d="M13.8333 7.5H10.5V2.5H5.49996V7.5H2.16663L7.99996 13.3333L13.8333 7.5ZM2.16663 15V16.6667H13.8333V15H2.16663Z" fill="#7B8395" /></g>
-                                    <defs><clipPath id="clip0"><rect width="16" height="16" fill="white" /></clipPath></defs>
-                                </svg>
+                                <div className="cars-table__row-item-head-inner">
+                                    <span className="cars-table__row-item-head-text">Марка и модель</span>
+                                    <svg ref={this.carsTitleSvg} className="cars-table__row-item-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clipPath="url(#clip0)"> <path d="M13.8333 7.5H10.5V2.5H5.49996V7.5H2.16663L7.99996 13.3333L13.8333 7.5ZM2.16663 15V16.6667H13.8333V15H2.16663Z" fill="#7B8395" /></g>
+                                        <defs><clipPath id="clip0"><rect width="16" height="16" fill="white" /></clipPath></defs>
+                                    </svg>
+                                </div>
                             </th>
                             {tariffsList.map((tariff, idx) => {
                                 return <th className="cars-table__row-item-head" key={`title_${idx}`} style={{ width: columnWidth }}>{tariff}</th>

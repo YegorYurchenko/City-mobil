@@ -54,6 +54,10 @@
         }
     }
 
+    &__row-item-head-inner {
+        position: relative;
+    }
+
     &__row-item-head {
         border-right: none;
 
@@ -83,8 +87,8 @@
 
     &__row-item-svg {
         position: absolute;
-        top: calc(32% - 8px);
-        right: 6px;
+        top: calc(-20% - 8px);
+        right: -10px;
         transform: rotate(0deg);
         transition: transform 0.25s ease-in-out;
         
@@ -93,8 +97,8 @@
         }
         
         @media (max-width: grid('xl')) {
-            top: calc(22% - 8px);
-            right: 0px;
+            top: calc(-10% - 8px);
+            right: -10px;
         }
     }
 }
