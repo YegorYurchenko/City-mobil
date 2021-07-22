@@ -1,5 +1,19 @@
 .cars-table {
+    position: relative;
+    padding: 0 3px 0 0;
     height: calc(100% - 58px - 58px); // Из-за searcher и result
+
+    &.desktop {
+        margin: 0 -7px 0 0;
+    }
+
+    &.desktopShort {
+        margin: 0 -3px 0 0;
+    }
+
+    &.mobile {
+        margin: 0 -5px 0 0;
+    }
     
     &__table {
         margin: 0;
@@ -9,7 +23,6 @@
         color: color('grey-darkest');
         background-color: color('white');
         border-collapse: separate;
-        -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none;
 
         @media (max-width: grid('md')) {
@@ -33,15 +46,11 @@
         border: 1px solid rgba(198, 209, 221, .5);
 
         @media (max-width: grid('xl')) {
-            padding: 10px;
-        }
-
-        @media (max-width: grid('lg')) {
-            padding: 8px;
+            padding: 11px;
         }
 
         @media (max-width: grid('xs')) {
-            padding: 10px 5px;
+            font-size: 10px;
         }
     }
 
@@ -74,12 +83,18 @@
 
     &__row-item-svg {
         position: absolute;
-        top: calc(50% - 8px);
-        left: -30px;
-
-        @media (max-width: grid('md')) {
-            top: -22px;
-            left: calc(50% - 8px);
+        top: calc(32% - 8px);
+        right: 6px;
+        transform: rotate(0deg);
+        transition: transform 0.25s ease-in-out;
+        
+        &.rotate {
+            transform: rotate(-180deg);
+        }
+        
+        @media (max-width: grid('xl')) {
+            top: calc(22% - 8px);
+            right: 0px;
         }
     }
 }

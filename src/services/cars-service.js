@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const getData = async () => {
+const getData = async () => {
     let cars = null;
     let tariffsList = null;
+
     // Получаем данные всех машин
     await axios({
         method: 'get',
@@ -11,7 +12,7 @@ export const getData = async () => {
         .then((response) => {
             switch (response.status) {
                 case 200:
-                    cars = response.data.cars;
+                    cars = sortCarsAsc(response.data.cars);
                     tariffsList = response.data.tariffs_list;
                     break;
                 default:
@@ -25,6 +26,26 @@ export const getData = async () => {
     
     return {
         cars,
-        tariffsList
+        tariffsList,
     };
 }
+
+const sortCarsAsc = (cars) => {
+    return cars.sort((a, b) => {
+        const first = `${a.mark.toLowerCase()} ${a.model.toLowerCase()}`;
+        const second = `${b.mark.toLowerCase()} ${b.model.toLowerCase()}`;
+        if (first > second) return 1;
+        if (first < second) return -1;
+    });
+}
+
+const sortCarsDesc = (cars) => {
+    return cars.sort((a, b) => {
+        const first = `${a.mark.toLowerCase()} ${a.model.toLowerCase()}`;
+        const second = `${b.mark.toLowerCase()} ${b.model.toLowerCase()}`;
+        if (first < second) return 1;
+        if (first > second) return -1;
+    });
+}
+
+export { getData, sortCarsAsc, sortCarsDesc };
