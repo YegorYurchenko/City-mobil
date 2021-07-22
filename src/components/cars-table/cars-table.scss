@@ -1,0 +1,100 @@
+.cars-table {
+    position: relative;
+    padding: 0 3px 0 0;
+    height: calc(100% - 58px - 58px); // Из-за searcher и result
+
+    &.desktop {
+        margin: 0 -7px 16px 0;
+    }
+
+    &.desktopShort {
+        margin: 0 -3px 16px 0;
+    }
+
+    &.mobile {
+        margin: 0 -5px 16px 0;
+    }
+    
+    &__table {
+        margin: 0;
+        padding: 0;
+        border-spacing: 0;
+        line-height: 16px;
+        color: color('grey-darkest');
+        background-color: color('white');
+        border-collapse: separate;
+        -ms-overflow-style: none;
+
+        @media (max-width: grid('md')) {
+            overflow-x: scroll;
+        }
+    }
+
+    &__head th {
+        position: sticky;
+        top: 0;
+        min-height: 0;
+        background: color('grey-light2');
+    }
+
+    &__row-item-head, &__row-item {
+        padding: 16px;
+        font-size: 12px;
+        font-weight: normal;
+        color: color('grey-darkest');
+        text-align: center;
+        border: 1px solid rgba(198, 209, 221, .5);
+
+        @media (max-width: grid('xl')) {
+            padding: 11px;
+        }
+
+        @media (max-width: grid('xs')) {
+            font-size: 10px;
+        }
+    }
+
+    &__row-item-head {
+        border-right: none;
+
+        &:first-child {
+            cursor: pointer;
+        }
+
+        &:last-child {
+            border-right: 1px solid rgba(198, 209, 221, .5);
+        }
+    }
+    
+    &__row-item {
+        color: color('black');
+        border-top: none;
+        border-right: none;
+        cursor: pointer;
+
+        &:first-child {
+            text-align: left;
+        }
+
+        &:last-child {
+            border-right: 1px solid rgba(198, 209, 221, .5);
+        }
+    }
+
+    &__row-item-svg {
+        position: absolute;
+        top: calc(32% - 8px);
+        right: 6px;
+        transform: rotate(0deg);
+        transition: transform 0.25s ease-in-out;
+        
+        &.rotate {
+            transform: rotate(-180deg);
+        }
+        
+        @media (max-width: grid('xl')) {
+            top: calc(22% - 8px);
+            right: 0px;
+        }
+    }
+}
