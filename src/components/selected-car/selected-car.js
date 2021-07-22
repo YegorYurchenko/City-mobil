@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SelectedCar = ({ selectedCarData }) => {
     if (!selectedCarData) {
@@ -11,5 +12,9 @@ const SelectedCar = ({ selectedCarData }) => {
         </div>
     );
 }
+
+SelectedCar.propTypes = {
+    selectedCarData: PropTypes.string,
+};
 
 export default SelectedCar;

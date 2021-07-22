@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
+import PropTypes from 'prop-types';
 
 class CarsTable extends Component {
     componentDidMount() {
@@ -124,6 +125,14 @@ class CarsTable extends Component {
     }
 }
 
+CarsTable.propTypes = {
+    loading: PropTypes.bool,
+    cars: PropTypes.array,
+    tariffsList: PropTypes.array,
+    onSortCarsChange: PropTypes.func,
+    onCarClick: PropTypes.func,
+};
+
 const CarsTableRow = ({ tariffsList, title, tariffs }) => {
     const columnWidth = `${tariffsList.length + 1}%`;
 
@@ -142,6 +151,12 @@ const CarsTableRow = ({ tariffsList, title, tariffs }) => {
             })}
         </tr>
     );
+};
+
+CarsTableRow.propTypes = {
+    tariffsList: PropTypes.array,
+    title: PropTypes.string,
+    tariffs: PropTypes.object,
 };
 
 export default CarsTable;
